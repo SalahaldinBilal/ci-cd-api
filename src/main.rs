@@ -36,7 +36,7 @@ fn create_app() -> App<
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let port: u16 = env::var("PORT")
-        .unwrap_or(String::from("8080"))
+        .unwrap_or_else(|_| "8080".into())
         .parse()
         .unwrap();
 
