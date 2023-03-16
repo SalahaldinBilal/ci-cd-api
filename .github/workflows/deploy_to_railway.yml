@@ -21,7 +21,12 @@ jobs:
       - name: Install Railway
         run: curl -fsSL https://railway.app/install.sh | sh
 
-      - name: Deploy
+      - name: Link railway
+        run: railway link --environment production ${{ secrets.RAILWAY_PROJECT_ID }}
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+      - name: Deploy to railway
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
