@@ -73,13 +73,15 @@ mod tests {
         let resp = test::call_service(&app, req).await;
         assert_eq!(resp.status(), http::StatusCode::BAD_REQUEST);
     }
-
+ 
     #[actix_web::test]
     async fn test_greet_ok() {
         let app = test::init_service(create_app()).await;
         let req = test::TestRequest::default()
             .uri("/greet?name=Salah")
             .to_request();
+
+        let a = 1;
 
         let resp = test::call_service(&app, req).await;
         assert_eq!(resp.status(), http::StatusCode::OK);
